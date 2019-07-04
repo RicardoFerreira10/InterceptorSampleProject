@@ -29,9 +29,11 @@
  */
 + (BOOL)canInitWithRequest:(NSURLRequest *) request {
     NSLog(@"[%@] Requesting....", NSStringFromClass([self class]));
-
     
-    return YES;
+    if ([request.URL.absoluteString hasPrefix:@"https"]) {
+        return YES;
+    }
+    return NO;
 }
 
 /**
